@@ -23,13 +23,6 @@ The UDID application assumes you can read a dense online form, upload clear docu
 - Of **1.62 crore UDID applications**, **22.3 lakh have been rejected** and about **15 lakh are awaiting assessment** (Lok Sabha reply, 12 Aug 2025, reported by PTI).
 - Document problems usually surface only after submission. Saksham surfaces them first.
 
-## Screenshots
-
-<!-- Add 3 screenshots after the latest build: onboarding, document checklist result, help request confirmation -->
-| Onboarding | Document check | Help request |
-|---|---|---|
-| _add image_ | _add image_ | _add image_ |
-
 ---
 
 ## Tech stack
@@ -156,10 +149,10 @@ A good 2-minute walkthrough: pick a barrier, upload a sharp photo (pass), upload
 
 | Name | Role |
 |---|---|
-| _Name 1_ | _Product and research_ |
-| _Name 2_ | _Frontend and accessibility_ |
-| _Name 3_ | _Image checks and backend_ |
-| _Name 4_ | _Testing and field research_ |
+| Mehak Pabba| _Product and research_ |
+| Shruti Shankhwar | _Frontend and accessibility_ |
+| Harshad Chapte| _Image checks and backend_ |
+| Keertan Shetty | _Testing and field research_ |
 
 ## Acknowledgements and sources
 
@@ -167,6 +160,4 @@ A good 2-minute walkthrough: pick a barrier, upload a sharp photo (pass), upload
 - Lok Sabha reply on UDID applications, 12 Aug 2025 (PTI report).
 - DEPwD UDID documentation, swavlambancard.gov.in (official portal; Saksham is independent of it).
 
-## License
 
-_Add a license before making the repository public (for example MIT)._
