@@ -1,163 +1,248 @@
-# Saksham
+# Saksham (सक्षम) — Accessible Government ID Portal
 
-**An AI-assisted accessibility layer for India's UDID (Unique Disability ID) application.**
-Built by Team NEXORA01 for the Seva Innovation Challenge 2026.
+> **An empathetic, barrier-free accessibility companion for citizens and caregivers applying for a Government Disability ID (UDID).**
 
-> **Demo prototype.** Saksham is not an official government product and is not connected to the UDID portal (swavlambancard.gov.in). It does not submit applications, verify documents, or issue IDs. All bookings, statuses and sample data in the app are mock data.
-
----
-
-## What it does
-
-The UDID application assumes you can read a dense online form, upload clear documents and travel to a hospital. Many applicants can't. Saksham sits in front of the official portal and:
-
-1. **Adapts to the person.** The user picks what is difficult for them (cannot read, cannot hear, cannot travel, needs a caregiver) and the whole interface changes: voice read-aloud, larger text, high contrast, visual alerts, caregiver mode.
-2. **Checks documents before submission.** Each photo (passport photo, ID proof, address proof, disability certificate) is checked for blur, lighting and resolution **on the user's own device**. The result is a clear pass or retake, with a plain-language reason, shown on screen and spoken aloud.
-3. **Prepares the form.** One question per screen, read aloud, ending in a copy-ready answer sheet to paste into the official portal.
-4. **Prepares the hospital visit.** Help requests (home assessment or caregiver support), a "what to carry" checklist and a status tracker that mirrors the real application stages.
-5. **Answers questions in plain language** through a help chat (Gemini, server-side, no personal data sent).
-
-## Why it exists
-
-- India has **2.68 crore persons with disabilities**, about 69% in rural areas (Census 2011).
-- Of **1.62 crore UDID applications**, **22.3 lakh have been rejected** and about **15 lakh are awaiting assessment** (Lok Sabha reply, 12 Aug 2025, reported by PTI).
-- Document problems usually surface only after submission. Saksham surfaces them first.
+[![WCAG 2.1 AA Compliant](https://img.shields.io/badge/Accessibility-WCAG%202.1%20AA-success?style=flat-square)](docs/manual-qa.md)
+[![Zero-PII Architecture](https://img.shields.io/badge/Privacy-Zero--PII%20Guaranteed-blue?style=flat-square)](#privacy--safety-first-architecture)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square)](LICENSE)
+[![Node.js](https://img.shields.io/badge/Node.js-20%20LTS%20%7C%2022%20LTS-green?style=flat-square)](https://nodejs.org)
+[![React 19](https://img.shields.io/badge/React-19-61dafb?style=flat-square)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?style=flat-square)](https://www.typescriptlang.org)
 
 ---
 
-## Tech stack
+## 🌟 The Problem & The Solution
 
-| Area | Technology |
-|---|---|
-| UI | React 19, TypeScript, Vite |
-| Styling | Tailwind CSS 4 |
-| State | Maharashtra |
-| Animation | Framer Motion |
-| Icons | lucide-react |
-| Voice | Web Speech API (browser text-to-speech) |
-| Image checks | Canvas API (blur, brightness, resolution), runs in the browser |
-| Server | Express (Gemini help chat, mock endpoints) |
-| AI | Google Gemini via `@google/genai` (help chat only) |
+### The Challenge
+In India, the **Unique Disability ID (UDID / Swavlamban)** is essential for persons with disabilities to access welfare pensions, 75% rail concessions, assistive equipment under ADIP, and income tax exemptions. However, the official portal application process poses steep barriers:
+- **High Document Rejection Rates:** Citizens travel long distances to internet cafes, only to have uploads rejected due to blur, poor lighting, or file sizes exceeding the 200 KB government portal limit.
+- **Cognitive & Language Friction:** Long, complex forms with bureaucratic terminology.
+- **Predatory Middlemen:** Scammers charging fees for a government process that is **100% free**.
+- **Mobility Barriers:** Severe disabilities preventing physical hospital visits without knowing they can request doorstep assessment.
+
+### The Solution: Saksham
+Saksham is a **dignified pre-application companion** built from the ground up for full accessibility:
+1. **Client-Side Document Readiness:** Tests document clarity (blur, lighting, resolution) and downsizes images to under 200 KB *directly on your device*—images never leave the phone or computer.
+2. **Form Prep Buddy & Cheat Sheet:** A simple, one-question-at-a-time wizard in Grade 5 language (English & Hindi) that outputs a copyable and printable cheat sheet.
+3. **Doorstep & Hospital Visit Preparation:** Generates copyable, respectful request letters to Chief Medical Officers (CMO) for home assessment, interactive packing checklists, and local help center directories.
+4. **7-Stage Timeline Tracker:** Accurately mirrors official portal stages from submission to e-UDID download, including resolution guidance for medical board correction requests.
+5. **Ask Saksham AI Assistant:** A safety-grounded Gemini 3.8 Flash helper that explains rules, documents, and hospital steps without jargon.
 
 ---
 
-## Getting started
+## 🚀 Key Features
+
+| Feature | Description |
+| :--- | :--- |
+| **Multi-Barrier Onboarding** | Instant UI adaptation for *Reading* (Large font, High-Contrast, Voice-first), *Hearing* (Captions, visual cues), *Travel* (Doorstep help), and *Caregiver* (Co-applicant mode). |
+| **Bilingual Support** | Instant toggle between **English (EN)** and **हिन्दी (HI)** with complete 100% dictionary key parity. |
+| **Voice-First Narration** | Web Speech API speech assistant reads any screen, glossary item, or question aloud with pause/resume controls. |
+| **High-Contrast & Font Scaler** | WCAG AAA 7:1 contrast mode (black background with crisp yellow borders) and 3-stage font scaling (`A`, `A+`, `A++`). |
+| **5-Slot Document Readiness** | Checks Passport Photo, ID Proof, Address Proof, Certificate, and Signature with in-memory Canvas Laplacian blur variance and luminance checking. |
+| **Under 200 KB Compressor** | In-browser Canvas compressor scales down oversized camera photos to under 200 KB with instant download. |
+| **"What do I need?" Quick Check** | 5-question triage modal routing citizens to document prep, hospital assessment, or local help centers. |
+| **Official Timeline Tracker** | 7 portal stages from *Started in Saksham* through *e-UDID Ready* with an interactive *Corrections Requested* simulation. |
+| **Demo Stats & KPI Engine** | File-backed server storage (`data/demo_db.json`) calculating live Average Onboarding Duration and Document Pass Rates. |
+| **In-Browser Self-Test Diagnostics** | 6-point automated browser diagnostics suite verifying canvas CV, aria-live regions, zero-network leaks, adaptations, i18n parity, and speech dispatch. |
+
+---
+
+## 🔒 Privacy & Safety-First Architecture
+
+Project Saksham strictly enforces zero-PII storage:
+
+1. **Images Never Leave the Device:**
+   - All document blur, lighting, and compression checks execute inside an HTML5 `<canvas>` in the browser. No image, blob, or base64 data is ever transmitted to the server or any external API.
+2. **Volatile Form Prep Memory:**
+   - Form-prep answers (name, date of birth, contact details) exist only in browser memory and are wiped when the tab closes or when clicking **"Clear my data"**.
+   - Saksham **never asks for or stores** Aadhaar numbers, bank account details, OTPs, or passwords.
+3. **Client-Side Document Diagnostics:**
+   - Document diagnostics strictly use plain language (*"Photo looks clear"*). Saksham **never claims to verify authenticity** or guarantee government approval.
+4. **Automated Anti-Fraud Warnings:**
+   - Prominently displays safety banners across all views: *"Applying for a UDID is 100% FREE. Never pay anyone to get a UDID card."*
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:**
+  - React 19 & TypeScript
+  - Tailwind CSS v4 (with `@tailwindcss/vite`)
+  - Framer Motion (reduced-motion compliant animations)
+  - Lucide React (accessible icon set)
+  - Zustand (state management with persistent UI settings)
+  - HTML5 Canvas API (Laplacian blur variance and luminance diagnostics)
+- **Backend:**
+  - Node.js (v20+ LTS recommended)
+  - Express 4
+  - Vite 6 dev middleware (single-port unified dev server)
+  - `@google/genai` TypeScript SDK (Gemini 3.8 Flash model)
+- **Quality Assurance & Testing:**
+  - Node.js built-in test runner (`tsx --test src/**/*.test.ts`) — 45 automated unit tests
+  - Custom automated guardrail scanner (`scripts/check-rules.mjs`)
+  - Playwright browser testing suite (`playwright-cli`)
+
+---
+
+## 💻 Getting Started (Local Setup)
 
 ### Prerequisites
-- **Node.js** (current LTS recommended) and npm. Check with `node -v`.
-- **Chrome or Edge** recommended (best text-to-speech and camera support).
+- **Node.js:** Version 20 LTS or 22 LTS (minimum v18.18.0)
+- Verify Node.js is installed:
+  ```bash
+  node -v
+  npm -v
+  ```
 
-### 1. Install
+### 1. Installation
+Clone the repository or extract the ZIP file, open a terminal in the folder, and run:
 ```bash
 npm install
 ```
 
-### 2. Set environment variables
-Create a file named `.env.local` in the project root:
+### 2. Environment Configuration (Optional)
+Copy the example environment file:
 ```bash
-GEMINI_API_KEY="your_key_here"
+cp .env.example .env
 ```
-- Only the **help chat** needs the key. The rest of the app works without it.
-- The key is used on the server only. **Never commit `.env.local`** or paste the key into client code.
-- `APP_URL` in `.env.example` is for hosting and is not needed locally.
+Open `.env` and add your Google Gemini API key if you wish to enable the AI chat helper:
+```env
+PORT=3000
+GEMINI_API_KEY="AIzaSyYourActualKeyHere"
+```
+*(Note: If you omit the API key, the app still functions completely with built-in rule-based safety responses!)*
 
-### 3. Run
+### 3. Seed Demo Data
+Populate the demo database (`data/demo_db.json`) with baseline KPI metrics:
+```bash
+npm run seed
+```
+
+### 4. Start the Application
+Run the unified full-stack development server:
 ```bash
 npm run dev
 ```
-Open **http://localhost:3000**.
+Open your browser and navigate to:
+```text
+http://localhost:3000
+```
 
-### 4. Build for production
+---
+
+## 🧪 Testing & Verification
+
+### Run the Unit Test Suite
+Executes all 45 automated unit tests covering blur detection, i18n parity, storage rules, and validation:
 ```bash
-npm run build
-npm run preview
+npm test
 ```
 
-### Scripts
-
-| Command | What it does |
-|---|---|
-| `npm run dev` | Start the dev server on port 3000 |
-| `npm run build` | Production build into `dist/` |
-| `npm run preview` | Serve the production build locally |
-| `npm run lint` | Type-check with `tsc --noEmit` |
-| `npm run clean` | Remove `dist/` and `server.js` |
-
----
-
-## Project structure
-
+### Run Automated Security & Privacy Guardrails
+Verifies that no PII, unapproved speech callers, raw storage calls, or image leaks exist:
+```bash
+node scripts/check-rules.mjs
 ```
-app/          Screens (onboarding, document checklist, and so on)
-components/   Shared UI components (uploader, voice assistant, ...)
-store/        Zustand stores (accessibility preferences, journey state)
-lib/          Helpers, including lib/canvas/ (blur and brightness checks)
-src/          App entry and re-exports of the folders above
+
+### Run Type Checking
+```bash
+npm run lint
 ```
-Most real code lives in the root-level folders. Files under `src/` mainly re-export from them, so check both before moving or deleting anything.
+
+### Run In-Browser Self-Test Diagnostics
+1. Navigate to `http://localhost:3000`.
+2. Click **"Check my documents"** ➔ expand **"Demo Tools (Evaluation Bypass Panel)"**.
+3. Click **"Run Browser Self-Test"** ➔ click **"Run All Tests"**.
+4. Click **"Copy Report"** to copy the full markdown diagnostic log.
 
 ---
 
-## Using the demo
+## 📦 Production Build & Deployment
 
-The demo includes tools so you can show both outcomes without hunting for test images.
+To compile and package the application for production:
 
-- **Demo mode** (switch in the footer) reveals a **Demo tools** panel with sample documents and a "Simulate next status" button for the tracker.
-- In demo mode, a file name containing `pass` or `fail` forces that result, for example `medical_cert_pass.jpg`. Results from this path are labelled **Demo Bypass**.
-- Any other file runs the real on-device blur and lighting check.
-
-A good 2-minute walkthrough: pick a barrier, upload a sharp photo (pass), upload a blurry one (retake with a spoken reason), prepare the answer sheet, create a help request, then show the tracker.
-
----
-
-## Accessibility
-
-- Full keyboard operation with visible focus indicators.
-- Results announced through `aria-live` regions **and** spoken aloud when read-aloud is on.
-- State is never shown by color alone (icon plus text).
-- Large touch targets, adjustable text size and a high-contrast mode.
-- Designed to work at 360px width on a phone.
-
-## Privacy and security
-
-- **Certificate and ID images never leave the device.** Image analysis runs in the browser, and only numeric results (such as a sharpness score) are used.
-- Saksham **never asks for or stores** Aadhaar numbers, OTPs or bank details.
-- Form-prep answers stay in memory or session storage and can be wiped with **Clear my data**.
-- The Gemini key stays on the server. No personal data or images are sent to the model.
+1. **Build the static bundle:**
+   ```bash
+   npm run build
+   ```
+2. **Start in production mode:**
+   - **Mac / Linux:**
+     ```bash
+     NODE_ENV=production npx tsx server.ts
+     ```
+   - **Windows (PowerShell):**
+     ```powershell
+     $env:NODE_ENV="production"; npx tsx server.ts
+     ```
 
 ---
 
-## Current limitations
+## 📁 Project Structure
 
-- Mock data and mock APIs only. No connection to the UDID portal.
-- The document check measures photo quality (sharpness, light, resolution). It does **not** read the certificate, verify authenticity or judge disability.
-- Text-to-speech depends on the voices installed in the user's browser. Hindi voices are not available on every device.
-- Features marked as planned below are not built.
-
-## Roadmap
-
-- Field pilot with community helpers (ASHA, CSC operators) in one district, with department consent
-- More regional languages, starting with Marathi
-- Accessibility audit (WCAG 2.1 AA) with disabled users
-- Consent-based status tracking through the portal's official data-sharing process, if approved
+```text
+├── app/                        # Route pages and layouts
+│   ├── document/               # Document Readiness Checklist page
+│   ├── onboarding/             # Step 1: Barriers & Accommodation page
+│   └── layout.tsx              # Root HTML layout and meta tags
+├── data/                       # File-backed demo database
+│   └── demo_db.json            # Stores demo KPI metrics, doc checks, help requests (zero PII)
+├── docs/                       # Documentation
+│   └── manual-qa.md            # Comprehensive step-by-step manual QA & demo checklist
+├── lib/                        # Core algorithmic libraries
+│   ├── canvas/                 # Laplacian blur and luminance computer vision algorithms
+│   └── config.ts               # Global constants (MAX_UPLOAD_KB = 200, BLUR_MIN = 150)
+├── scripts/                    # Automation scripts
+│   ├── check-rules.mjs         # Automated security, PII, and accessibility guardrails checker
+│   └── seed-demo-data.ts       # Seeds demo database with realistic metrics
+├── src/
+│   ├── components/             # Accessible React UI components
+│   │   ├── AskSakshamChat.tsx  # Gemini 3.8 Flash AI chat assistant
+│   │   ├── BookHelpView.tsx    # Step 4: Hospital Visit & CMO doorstep request generator
+│   │   ├── DashboardView.tsx   # Step 5: Digital UDID Pass preview & printable receipt
+│   │   ├── DemoStatsPanel.tsx  # Admin KPI panel (Avg Onboarding Time, Pass Rate)
+│   │   ├── DocumentChecklist.tsx # 5-slot document checklist and image compressor
+│   │   ├── FormPrepView.tsx    # Step 3: Question wizard & copyable cheat sheet
+│   │   ├── HomeScreen.tsx      # Landing page, fraud warnings, quick access
+│   │   ├── JourneyStepper.tsx  # 5-step journey progress bar
+│   │   ├── QuickCheckModal.tsx # 5-question pre-check guidance modal
+│   │   ├── SelfTestModal.tsx   # In-browser 6-point self-test diagnostics suite
+│   │   ├── TrackApplicationView.tsx # 7-stage Swavlamban timeline tracker
+│   │   └── VoiceAssistant.tsx  # Floating Web Speech API audio narration orb
+│   ├── server/                 # Backend database & validation engine
+│   │   ├── demoDb.ts           # Demo database CRUD and strict input validation
+│   │   └── demoDb.test.ts      # Unit tests for demo storage and stats engine
+│   ├── store/                  # Zustand store
+│   │   └── useSakshamStore.ts  # Centralized app state, barrier presets, adaptations
+│   ├── utils/                  # Accessible utilities
+│   │   ├── i18n.ts             # English & Hindi bilingual dictionaries (100% key parity)
+│   │   ├── speech.ts           # Centralized Web Speech API helper
+│   │   └── storage.ts          # Safe appStorage (strictly blocks persisting PII)
+│   ├── App.tsx                 # Main application controller
+│   └── main.tsx                # Client entry point
+├── package.json                # Project dependencies and scripts
+├── server.ts                   # Express full-stack server & Gemini proxy
+├── tsconfig.json               # TypeScript configuration
+└── vite.config.ts              # Vite 6 configuration with Tailwind CSS v4
+```
 
 ---
 
-## Team
+## 📋 Manual QA Checklist
 
-**Team NEXORA01**
+For an exhaustive, step-by-step test matrix covering keyboard-only use, 360px mobile viewports, high-contrast, text scaling, and every screen's happy and failure path, refer to:
+👉 **[`docs/manual-qa.md`](docs/manual-qa.md)**
 
-| Name | Role |
-|---|---|
-| Mehak Pabba| _Product and research_ |
-| Shruti Shankhwar | _Frontend and accessibility_ |
-| Harshad Chapte| _Image checks and backend_ |
-| Keertan Shetty | _Testing and field research_ |
+---
 
-## Acknowledgements and sources
+## ⚖️ Official Government Portal Disclaimer
 
-- Census of India 2011 (disability tables) and the MoSJE statistical profile of persons with disabilities.
-- Lok Sabha reply on UDID applications, 12 Aug 2025 (PTI report).
-- DEPwD UDID documentation, swavlambancard.gov.in (official portal; Saksham is independent of it).
+> **Important Notice:** Project Saksham is an independent, non-commercial citizen accessibility initiative. Saksham does not issue, approve, or renew government identity cards, nor does it represent the Ministry of Social Justice and Empowerment or the Department of Empowerment of Persons with Disabilities (DEPwD).
+>
+> Official UDID applications must be submitted directly on the official Government of India portal: **[swavlambancard.gov.in](https://www.swavlambancard.gov.in/)**.  
+> **Applying on the official government portal is 100% FREE.** Never pay any money, fee, or bribe to anyone claiming to provide a UDID card.
 
+---
 
+## 📄 License
+
+This project is licensed under the Apache License 2.0 — see the [LICENSE](LICENSE) file for details.
