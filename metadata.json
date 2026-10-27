@@ -1,0 +1,6 @@
+{
+  "name": "Saksham - Accessible Government ID Portal",
+  "description": "An empathetic, barrier-free accessibility platform for disabled citizens applying for government IDs with AI document scanning and voice assistance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,202 @@
+{
+  "help_requests": [
+    {
+      "id": "req-demo-101",
+      "applicantAlias": "Applicant A-402",
+      "requestedSlot": "Tomorrow, 10:00 AM - 12:00 PM",
+      "supportType": "doorstep_assessment",
+      "district": "Nagpur",
+      "status": "submitted_demo",
+      "createdAt": "2026-10-27T07:15:00.000Z"
+    },
+    {
+      "id": "req-demo-102",
+      "applicantAlias": "Applicant M-108",
+      "requestedSlot": "Day after, 02:00 PM - 04:00 PM",
+      "supportType": "caregiver_coordination",
+      "district": "South Delhi",
+      "status": "under_review_demo",
+      "createdAt": "2026-10-27T08:30:00.000Z"
+    },
+    {
+      "id": "req-demo-103",
+      "applicantAlias": "Applicant R-715",
+      "requestedSlot": "Tomorrow, 02:00 PM - 04:00 PM",
+      "supportType": "hospital_escort",
+      "district": "Jaipur",
+      "status": "acknowledged_demo",
+      "createdAt": "2026-10-27T09:00:00.000Z"
+    }
+  ],
+  "doc_checks": [
+    {
+      "id": "chk-demo-01",
+      "slot": "photo",
+      "blurScore": 248.5,
+      "brightnessScore": 138,
+      "passed": true,
+      "checkedAt": "2026-10-27T07:10:00.000Z"
+    },
+    {
+      "id": "chk-demo-02",
+      "slot": "id_proof",
+      "blurScore": 195.2,
+      "brightnessScore": 145,
+      "passed": true,
+      "checkedAt": "2026-10-27T07:11:30.000Z"
+    },
+    {
+      "id": "chk-demo-03",
+      "slot": "address_proof",
+      "blurScore": 215.8,
+      "brightnessScore": 120,
+      "passed": true,
+      "checkedAt": "2026-10-27T07:12:15.000Z"
+    },
+    {
+      "id": "chk-demo-04",
+      "slot": "certificate",
+      "blurScore": 42.1,
+      "brightnessScore": 110,
+      "passed": false,
+      "checkedAt": "2026-10-27T07:13:00.000Z"
+    },
+    {
+      "id": "chk-demo-05",
+      "slot": "certificate",
+      "blurScore": 260.4,
+      "brightnessScore": 142,
+      "passed": true,
+      "checkedAt": "2026-10-27T07:14:10.000Z"
+    },
+    {
+      "id": "chk-demo-06",
+      "slot": "signature",
+      "blurScore": 180,
+      "brightnessScore": 155,
+      "passed": true,
+      "checkedAt": "2026-10-27T07:14:40.000Z"
+    },
+    {
+      "id": "chk-demo-07",
+      "slot": "photo",
+      "blurScore": 38.5,
+      "brightnessScore": 45,
+      "passed": false,
+      "checkedAt": "2026-10-27T08:05:00.000Z"
+    },
+    {
+      "id": "chk-demo-08",
+      "slot": "photo",
+      "blurScore": 220,
+      "brightnessScore": 130,
+      "passed": true,
+      "checkedAt": "2026-10-27T08:06:15.000Z"
+    },
+    {
+      "id": "chk-demo-09",
+      "slot": "id_proof",
+      "blurScore": 235,
+      "brightnessScore": 140,
+      "passed": true,
+      "checkedAt": "2026-10-27T08:07:00.000Z"
+    },
+    {
+      "id": "chk-demo-10",
+      "slot": "address_proof",
+      "blurScore": 210,
+      "brightnessScore": 135,
+      "passed": true,
+      "checkedAt": "2026-10-27T08:08:00.000Z"
+    }
+  ],
+  "tracker_events": [
+    {
+      "id": "tr-demo-01",
+      "referenceAlias": "UDID-2024-88912-DL",
+      "stageId": "started",
+      "stageTitle": "1. Started in Saksham",
+      "status": "completed",
+      "timestamp": "2026-10-27T07:00:00.000Z"
+    },
+    {
+      "id": "tr-demo-02",
+      "referenceAlias": "UDID-2024-88912-DL",
+      "stageId": "documents_ready",
+      "stageTitle": "2. Documents ready",
+      "status": "completed",
+      "timestamp": "2026-10-27T07:15:00.000Z"
+    },
+    {
+      "id": "tr-demo-03",
+      "referenceAlias": "UDID-2024-88912-DL",
+      "stageId": "submitted_portal",
+      "stageTitle": "3. Submitted on the official portal",
+      "status": "completed",
+      "timestamp": "2026-10-27T07:30:00.000Z"
+    },
+    {
+      "id": "tr-demo-04",
+      "referenceAlias": "UDID-2024-88912-DL",
+      "stageId": "hospital_visit",
+      "stageTitle": "4. Visit hospital / CMO office",
+      "status": "in_progress",
+      "timestamp": "2026-10-27T07:35:00.000Z"
+    }
+  ],
+  "kpi_events": [
+    {
+      "id": "kpi-01",
+      "sessionId": "sess-demo-01",
+      "eventType": "onboarding_started",
+      "timestamp": "2026-10-27T06:58:00.000Z"
+    },
+    {
+      "id": "kpi-02",
+      "sessionId": "sess-demo-01",
+      "eventType": "onboarding_completed",
+      "durationSeconds": 98,
+      "timestamp": "2026-10-27T06:59:38.000Z"
+    },
+    {
+      "id": "kpi-03",
+      "sessionId": "sess-demo-02",
+      "eventType": "onboarding_started",
+      "timestamp": "2026-10-27T07:45:00.000Z"
+    },
+    {
+      "id": "kpi-04",
+      "sessionId": "sess-demo-02",
+      "eventType": "onboarding_completed",
+      "durationSeconds": 114,
+      "timestamp": "2026-10-27T07:46:54.000Z"
+    },
+    {
+      "id": "kpi-05",
+      "sessionId": "sess-demo-03",
+      "eventType": "onboarding_started",
+      "timestamp": "2026-10-27T08:12:00.000Z"
+    },
+    {
+      "id": "kpi-06",
+      "sessionId": "sess-demo-03",
+      "eventType": "onboarding_completed",
+      "durationSeconds": 84,
+      "timestamp": "2026-10-27T08:13:24.000Z"
+    },
+    {
+      "id": "kpi-07",
+      "sessionId": "sess-demo-04",
+      "eventType": "onboarding_started",
+      "timestamp": "2026-10-27T09:10:00.000Z"
+    },
+    {
+      "id": "kpi-08",
+      "sessionId": "sess-demo-04",
+      "eventType": "onboarding_completed",
+      "durationSeconds": 128,
+      "timestamp": "2026-10-27T09:12:08.000Z"
+    }
+  ],
+  "updatedAt": "2026-10-27T10:40:13.896Z"
+}
