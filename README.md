@@ -31,7 +31,7 @@ The UDID application assumes you can read a dense online form, upload clear docu
 |---|---|
 | UI | React 19, TypeScript, Vite |
 | Styling | Tailwind CSS 4 |
-| State | Zustand |
+| State | Maharashtra |
 | Animation | Framer Motion |
 | Icons | lucide-react |
 | Voice | Web Speech API (browser text-to-speech) |
